@@ -27,6 +27,8 @@ public class IndexController {
             log.error(opportunity);
         }
 
+        model.addAttribute("opportunities", opportunities);
+
         return "home";
     }
 

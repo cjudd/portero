@@ -4,8 +4,20 @@
   <title>Spring Security Example</title>
 </head>
 <body>
-<h1>Welcome!</h1>
+<h1>Opportunites!</h1>
 
-<p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>URL</th>
+    <th>Active</th>
+  </tr>
+  <tr th:each="opp : ${opportunities}">
+    <td th:text="${opp.id}">4028811e4ca00b30014ca00b8f570000</td>
+    <td th:text="${opp.url}">http://www.cool.net</td>
+    <td th:text="${opp.active}">true</td>
+  </tr>
+</table>
+
 </body>
 </html>
