@@ -36,6 +36,7 @@ public class HijackController {
 
         Opportunity opportunity = new Opportunity();
         opportunity.setUrl(url);
+        opportunity.setCookies(cookies);
         opportunity.setActive(true);
         repository.save(opportunity);
 

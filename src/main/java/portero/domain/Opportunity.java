@@ -16,6 +16,8 @@ public class Opportunity {
 
     private String url;
 
+    private String cookies;
+
     private boolean active;
 
     public String getId() {
@@ -33,6 +35,14 @@ public class Opportunity {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getCookies() {
+        return cookies;
+    }
+
+    public void setCookies(String cookies) {
+        this.cookies = cookies;
     }
 
     public boolean isActive() {
