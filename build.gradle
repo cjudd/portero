@@ -13,6 +13,7 @@ buildscript {
 }
 
 apply plugin: 'java'
+//apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'idea' 
 apply plugin: 'spring-boot'
@@ -22,6 +23,11 @@ jar {
     baseName = 'portero'
     version = '0.0.1-SNAPSHOT'
 }
+
+//war {
+//    baseName = 'portero'
+//}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -29,13 +35,20 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    providedRuntime
+}
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-starter-web")
+
+//    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+
     runtime("com.h2database:h2")
+
     testCompile("org.springframework.boot:spring-boot-starter-test") 
 }
 
