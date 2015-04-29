@@ -19,12 +19,10 @@ public class VisitSitesTask {
 
     public static final Log log = LogFactory.getLog(VisitSitesTask.class);
 
-    public static final int FIVE_MINUTES = 5000;// 600000;
-
     @Autowired
     private OpportunityRepository repository;
 
-    @Scheduled(fixedRate = FIVE_MINUTES)
+    @Scheduled(fixedRateString = "${portero.visit.rate}")
     public void reportCurrentTime() throws IOException {
 
         for (Opportunity opportunity: repository.findByActive(true)) {
@@ -33,15 +31,15 @@ public class VisitSitesTask {
             URL url = new URL(opportunity.getUrl());
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
             connection.setRequestProperty("Cookie", opportunity.getCookies());
+
             connection.connect();
 
             int responseCode = connection.getResponseCode();
-            if( responseCode < 200 || responseCode > 400){
+            if( responseCode != 200){
                 log.error(format("failed %s - %s with %d", opportunity.getId(), opportunity.getUrl(), responseCode));
                 opportunity.setActive(false);
                 repository.save(opportunity);
             }
-
         }
 
     }
