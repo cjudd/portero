@@ -4,7 +4,25 @@
   <title>Opportunity Details</title>
 </head>
 <body>
-<h1 th:text="${opportunity.url}">Title</h1>
+
+  <h1 th:text="${opportunity.url}">Title</h1>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>URL</td>
+        <td th:text="${opportunity.url}">http://www.cool.net</td>
+      </tr>
+      <tr>
+        <td>Active</td>
+        <td th:text="${opportunity.active}">true</td>
+      </tr>
+      <tr>
+        <td>cookies</td>
+        <td>document.cookie="<span th:text="${opportunity.cookies}">JSESSIONID=7FA4D3366D4140202E95811C96BED9A3</span>"</td>
+      </tr>
+    </tbody>
+  </table>
 
 
 </body>
