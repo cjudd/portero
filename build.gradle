@@ -17,7 +17,6 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea' 
 apply plugin: 'spring-boot'
-apply plugin: 'io.spring.dependency-management'
 
 jar {
     baseName = 'portero'
@@ -68,5 +67,5 @@ idea {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = '2.5'
 }
