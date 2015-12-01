@@ -10,10 +10,15 @@
   <tr>
     <th>URL</th>
     <th>Active</th>
+    <th>Cooke</th>
   </tr>
   <tr th:each="opp : ${opportunities}">
-    <td><a href="detail.html" th:href="@{/detail(id=${opp.id})}"><span th:text="${opp.url}">http://www.cool.net</span></a></td>
+    <td>
+      <a href="detail.html" th:href="@{/detail(id=${opp.id})}">
+      <span th:text="${opp.url}">http://www.cool.net</span></a>
+    </td>
     <td th:text="${opp.active}">true</td>
+    <td>document.cookie="<span th:text="${opp.cookies}">JSESSIONID=7FA4D3366D4140202E95811C96BED9A3</span>"</td>
   </tr>
 </table>
 
