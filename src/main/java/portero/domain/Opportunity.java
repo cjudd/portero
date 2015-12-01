@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
 public class Opportunity {
@@ -19,6 +20,8 @@ public class Opportunity {
     private String cookies;
 
     private boolean active;
+
+    private LocalDateTime createdDateTime;
 
     public String getId() {
         return id;
@@ -53,6 +56,14 @@ public class Opportunity {
         this.active = active;
     }
 
+    public LocalDateTime getCreatedDateTime() {
+        return createdDateTime;
+    }
+
+    public void setCreatedDateTime(LocalDateTime createdDateTime) {
+        this.createdDateTime = createdDateTime;
+    }
+
     @Override
     public String toString() {
         return "Opportunity{" +
@@ -60,4 +71,5 @@ public class Opportunity {
                 ", url='" + url + '\'' +
                 '}';
     }
+
 }

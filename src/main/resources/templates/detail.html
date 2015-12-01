@@ -10,16 +10,20 @@
   <table>
     <tbody>
       <tr>
-        <td>URL</td>
+        <td>URL:</td>
         <td th:text="${opportunity.url}">http://www.cool.net</td>
       </tr>
       <tr>
-        <td>Active</td>
+        <td>Active:</td>
         <td th:text="${opportunity.active}">true</td>
       </tr>
       <tr>
-        <td>cookies</td>
+        <td>Cookies:</td>
         <td>document.cookie="<span th:text="${opportunity.cookies}">JSESSIONID=7FA4D3366D4140202E95811C96BED9A3</span>"</td>
+      </tr>
+      <tr>
+        <td>Date/Time:</td>
+        <td th:text="${opportunity.createdDateTime}">2015-12-01T17:23:32.969</td>
       </tr>
     </tbody>
   </table>

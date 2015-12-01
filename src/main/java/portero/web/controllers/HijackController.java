@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import portero.dao.OpportunityRepository;
 import portero.domain.Opportunity;
 
+import java.time.LocalDateTime;
+
 import static java.lang.String.format;
 
 @Controller
@@ -38,8 +40,7 @@ public class HijackController {
         opportunity.setUrl(url);
         opportunity.setCookies(cookies);
         opportunity.setActive(true);
+        opportunity.setCreatedDateTime(LocalDateTime.now());
         repository.save(opportunity);
-
-
     }
 }
