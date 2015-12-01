@@ -9,14 +9,18 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
         classpath("io.spring.gradle:dependency-management-plugin:0.4.1.RELEASE")
         classpath("org.springframework:springloaded:1.2.0.RELEASE")
+        classpath('se.transmode.gradle:gradle-docker:1.2')
     }
 }
+
+group = 'javajudd'
 
 apply plugin: 'java'
 //apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'idea' 
 apply plugin: 'spring-boot'
+apply plugin: 'docker'
 
 jar {
     baseName = 'portero'
@@ -68,4 +72,16 @@ idea {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.5'
+}
+
+task docker(type: Docker, dependsOn: build) {
+    push = true
+    applicationName = jar.baseName
+    dockerfile = file('src/main/docker/Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
 }
